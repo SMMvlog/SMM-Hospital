@@ -1,0 +1,32 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %} Hospital Management System {% endblock %}
+
+
+{% block body %}
+
+<div class="container bk">
+    <h2 style="color:red" class="text-center mt-5">Admin Panel</h2>
+    <br><br>
+    <div class="row">
+        <div class="col-sm-4 text-center mydivstyle">
+            <a href="{% url 'viewdoc' %}"><h3>Doctors</h3> </a>
+            <h2>{{d}}</h2>
+        </div>
+
+        <div class="col-sm-4 text-center mydivstyle">
+            <a href="{% url 'viewp' %}"><h3>Patient</h3> </a>
+            <h2>{{p}}</h2>
+        </div>
+    <div class="col-sm-4 text-center mydivstyle">
+            <a href="{% url 'viewapp' %}"><h3>Appointment</h3> </a>
+            <h2>{{a}}</h2>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+{% endblock %}

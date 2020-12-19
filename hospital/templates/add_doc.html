@@ -1,0 +1,42 @@
+{% extends 'basic.html' %}
+{% block title %} Login {% endblock %}
+
+{% block body %}
+{% ifequal error "no" %}
+<script>
+    alert('New record created successfully');
+    window.location = ('{% url 'viewdoc' %}')
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Try again...There is something wrong');
+</script>
+{% endifequal %}
+
+
+<div class="container">
+    <h2 class="text-center"> Add Doctor</h2>
+
+    <form action="/adddoc/" method="post">
+        {% csrf_token %}
+        <label>Doctor Name:</label>
+        <input type="text" class="form-control" name="name">
+        <label> Mobile No: </label>
+        <input type="text" class="form-control" name="contact">
+
+        <label> Specialization: </label>
+        <input type="text" class="form-control" name="special">
+        <br>
+        <input type="submit" value="save" class="form-control btn btn-primary">
+
+
+    </form>
+
+
+</div>
+
+
+
+{% endblock %}

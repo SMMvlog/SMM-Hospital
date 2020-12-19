@@ -1,0 +1,37 @@
+{% extends 'basic.html' %}
+{% block title %} Login {% endblock %}
+
+{% block body %}
+{% ifequal error "no" %}
+<script>
+    alert('Logged In Successfully');
+    window.location = ('{% url 'home' %}')
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Please Enter correct username and password');
+</script>
+{% endifequal %}
+
+<div class="container">
+    <h2 class="text-center"> Admin Login</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <label>Admin Name:</label>
+        <input type="text" class="form-control" name="name">
+        <label> Password: </label>
+        <input type="password" class="form-control" name="pass">
+        <br>
+        <input type="submit" value="login" class="form-control btn btn-primary">
+
+
+    </form>
+
+
+</div>
+
+
+{% endblock %}

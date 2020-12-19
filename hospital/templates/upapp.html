@@ -1,0 +1,59 @@
+{% extends 'basic.html' %}
+{% block title %} View Appointment {% endblock %}
+
+{% block body %}
+{% ifequal error "no" %}
+<script>
+    alert('Appointment Detail Updated Successfully!!');
+    window.location = ('{% url 'viewapp' %}')
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Try again...There is something wrong');
+</script>
+{% endifequal %}
+
+
+<div class="container">
+    <h2 class="text-center"> Update Appointment</h2>
+
+    <form action="/addapp/" method="post">
+        {% csrf_token %}
+
+        <label>Doctor Name</label>
+        <select name="doctor" class="form-control">
+            {% for i in doc %}
+            <option value="{{i.name}}">
+            {{i.name}} [{{i.id}}]
+            </option>
+          {% endfor %}
+            <br>
+        </select>
+           <label>Patient Name</label>
+        <select name="patient" class="form-control">
+            {% for i in pnt %}
+            <option value="{{i.name}}">
+            {{i.name}} [{{i.id}}]
+            </option>
+          {% endfor %}
+        </select>
+
+        <label>Date 1 </label>
+        <input type="date" class="form-control" name="date">
+
+        <label> Time 1 </label>
+        <input type="time" class="form-control" name="time">
+        <br>
+        <input type="submit" value="save" class="form-control btn btn-primary">
+
+
+    </form>
+
+
+</div>
+
+
+
+{% endblock %}
